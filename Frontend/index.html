@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Smart Parking Allocation System</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1><i class="fas fa-parking"></i> Smart Parking Zone Management</h1>
+            <p class="subtitle">Real-time Parking Allocation with Rollback & Analytics</p>
+        </header>
+
+        <div class="main-content">
+            <div class="left-panel">
+                <section class="card">
+                    <h2><i class="fas fa-car"></i> Vehicle Registration</h2>
+                    <div class="form-group">
+                        <label for="vehicleId">Vehicle ID:</label>
+                        <input type="text" id="vehicleId" placeholder="ABC-123" maxlength="10">
+                    </div>
+                    <div class="form-group">
+                        <label for="preferredZone">Preferred Zone:</label>
+                        <select id="preferredZone">
+                            <option value="A">Zone A (Downtown)</option>
+                            <option value="B">Zone B (Business District)</option>
+                            <option value="C">Zone C (Residential)</option>
+                            <option value="D">Zone D (Commercial)</option>
+                        </select>
+                    </div>
+                    <button id="registerVehicle" class="btn btn-primary">
+                        <i class="fas fa-plus-circle"></i> Register Vehicle
+                    </button>
+                </section>
+
+                <section class="card">
+                    <h2><i class="fas fa-map-marker-alt"></i> Parking Request</h2>
+                    <div class="form-group">
+                        <label for="vehicleSelect">Select Vehicle:</label>
+                        <select id="vehicleSelect"></select>
+                    </div>
+                    <div class="form-group">
+                        <label for="requestZone">Requested Zone:</label>
+                        <select id="requestZone">
+                            <option value="A">Zone A</option>
+                            <option value="B">Zone B</option>
+                            <option value="C">Zone C</option>
+                            <option value="D">Zone D</option>
+                        </select>
+                    </div>
+                    <div class="button-group">
+                        <button id="allocateBtn" class="btn btn-success">
+                            <i class="fas fa-check-circle"></i> Allocate Parking
+                        </button>
+                        <button id="cancelBtn" class="btn btn-warning" disabled>
+                            <i class="fas fa-times-circle"></i> Cancel Request
+                        </button>
+                        <button id="occupyBtn" class="btn btn-info" disabled>
+                            <i class="fas fa-car-side"></i> Occupy Slot
+                        </button>
+                        <button id="releaseBtn" class="btn btn-danger" disabled>
+                            <i class="fas fa-sign-out-alt"></i> Release Slot
+                        </button>
+                    </div>
+                </section>
+
+                <section class="card">
+                    <h2><i class="fas fa-undo"></i> Rollback System</h2>
+                    <div class="form-group">
+                        <label for="rollbackCount">Rollback Last K Operations:</label>
+                        <input type="number" id="rollbackCount" min="1" max="10" value="1">
+                    </div>
+                    <button id="rollbackBtn" class="btn btn-secondary">
+                        <i class="fas fa-history"></i> Execute Rollback
+                    </button>
+                    <div class="rollback-stack">
+                        <h4>Rollback Stack (Last 10)</h4>
+                        <div id="rollbackStack"></div>
+                    </div>
+                </section>
+            </div>
+
+            <div class="right-panel">
+                <section class="card">
+                    <h2><i class="fas fa-chart-bar"></i> Live Analytics Dashboard</h2>
+                    <div class="stats-grid">
+                        <div class="stat-card">
+                            <h3>Zone Utilization</h3>
+                            <div id="zoneUtilization"></div>
+                        </div>
+                        <div class="stat-card">
+                            <h3>Requests Summary</h3>
+                            <div id="requestsSummary"></div>
+                        </div>
+                        <div class="stat-card">
+                            <h3>Average Duration</h3>
+                            <div id="averageDuration">0 min</div>
+                        </div>
+                        <div class="stat-card">
+                            <h3>Cross-Zone Allocations</h3>
+                            <div id="crossZoneCount">0</div>
+                        </div>
+                    </div>
+                </section>
+
+                <section class="card">
+                    <h2><i class="fas fa-table"></i> Parking Slot Status</h2>
+                    <div class="tabs">
+                        <button class="tab-btn active" data-zone="A">Zone A</button>
+                        <button class="tab-btn" data-zone="B">Zone B</button>
+                        <button class="tab-btn" data-zone="C">Zone C</button>
+                        <button class="tab-btn" data-zone="D">Zone D</button>
+                    </div>
+                    <div class="table-container">
+                        <table id="slotTable">
+                            <thead>
+                                <tr>
+                                    <th>Slot ID</th>
+                                    <th>Area</th>
+                                    <th>Availability</th>
+                                    <th>Vehicle ID</th>
+                                    <th>Status</th>
+                                </tr>
+                            </thead>
+                            <tbody id="slotTableBody"></tbody>
+                        </table>
+                    </div>
+                </section>
+
+                <section class="card">
+                    <h2><i class="fas fa-history"></i> Request History</h2>
+                    <div class="table-container">
+                        <table id="historyTable">
+                            <thead>
+                                <tr>
+                                    <th>Request ID</th>
+                                    <th>Vehicle ID</th>
+                                    <th>Requested Zone</th>
+                                    <th>Allocated Slot</th>
+                                    <th>State</th>
+                                    <th>Cross-Zone</th>
+                                    <th>Duration</th>
+                                </tr>
+                            </thead>
+                            <tbody id="historyTableBody"></tbody>
+                        </table>
+                    </div>
+                </section>
+            </div>
+        </div>
+
+        <div class="notification-area">
+            <div id="notification"></div>
+        </div>
+    </div>
+
+    
+<script src="js/api-client.js"></script>
+<script src="js/app.js"></script>
+</body>
+</html>
