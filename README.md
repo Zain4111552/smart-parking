@@ -356,8 +356,8 @@ For support, please:
 
 ---
 
-**Made with ❤️ by [Your Name]**  
-*Computer Science Student | Full-Stack Developer*
+**Made with ❤️ by Muhammad Zain**  
+*AI from UMT Universty Student | Full-Stack Developer*
 
 ---
 *Last Updated: January 2025*  
