@@ -114,4 +114,5 @@ class ApiClient {
 }
 
 // Create global API client instance
+
 window.apiClient = new ApiClient();
