@@ -479,4 +479,5 @@ class ParkingApp {
 document.addEventListener('DOMContentLoaded', () => {
     window.parkingApp = new ParkingApp();
     console.log('Smart Parking System with MongoDB loaded successfully!');
+
 });
