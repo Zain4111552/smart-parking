@@ -356,7 +356,7 @@ For support, please:
 
 ---
 
-**Made with ❤️ by Muhammad Zain**  
+**Made with ❤️ by Muhammad Zain\Abdul Rehman**  
 *AI from UMT Universty Student | Full-Stack Developer*
 
 ---
