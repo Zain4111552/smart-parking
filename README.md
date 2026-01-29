@@ -4,7 +4,7 @@ A full-stack web application for managing parking spaces with real-time allocati
 
 ## 🌟 Live Demo
 
-- **Frontend:** [https://smart-parking-system-demo.netlify.app](https://smart-parking-system-demo.netlify.app) *(Coming soon)*
+- **Frontend:** [https://smart-parking-system-demo.netlify.app](https://ziaura.site) *(Coming soon)*
 - **Backend API:** [https://smart-parking-backend.onrender.com/api](https://smart-parking-backend.onrender.com/api)
 - **API Documentation:** [https://smart-parking-backend.onrender.com](https://smart-parking-backend.onrender.com)
 
